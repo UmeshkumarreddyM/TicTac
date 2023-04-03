@@ -1,0 +1,343 @@
+import random
+try:
+    def exit():
+        print("PPROGRAM IS ENDED")
+        quit()
+
+    def see():
+        print(f'\n  {a[0][0]} | {a[0][1]} | {a[0][2]}  \n  {a[1][0]} | {a[1][1]} | {a[1][2]}  \n  {a[2][0]} | {a[2][1]} | {a[2][2]}  ')
+    def plc(x):
+        place = int(input("SPECIFY INDEX : "))
+
+        if place == 1:
+
+            if a[0][0] == ' ':
+                a[0][0] = x
+                see()
+
+            else:
+
+                print("It's value is already set ")
+                plc(x)
+
+        elif place == 2:
+
+            if a[0][1] == ' ':
+                    a[0][1] = x
+
+                    see()
+
+            else:
+
+                print("It's value is already set ")
+                plc(x)
+
+        elif place == 3:
+
+            if a[0][2] == ' ':
+                        a[0][2] = x
+                        see()
+
+            else:
+
+                        print("It's value is already set ")
+                        plc(x)
+
+        elif place == 4:
+
+            if a[1][0] == ' ':
+                        a[1][0] = x
+
+                        see()
+
+            else:
+
+                print("It's value is already set ")
+                plc(x)
+
+        elif place == 5:
+
+            if a[1][1] == ' ':
+                        a[1][1] = x
+
+                        see()
+
+            else:
+
+                        print("It's value is already set ")
+                        plc(x)
+
+        elif place == 6:
+
+            if a[1][2] == ' ':
+                        a[1][2] = x
+
+                        see()
+
+            else:
+
+                        print("It's value is already set ")
+                        plc(x)
+
+        elif place == 7:
+
+            if a[2][0] == ' ':
+                        a[2][0] = x
+
+                        see()
+            else:
+
+                        print("It's value is already set ")
+                        plc(x)
+
+
+        elif place == 8:
+
+            if a[2][1] == ' ':
+                        a[2][1] = x
+                        see()
+            else:
+
+                        print("It's value is already set ")
+                        plc(x)
+
+        elif place == 9:
+
+            if a[2][2] == ' ':
+                        a[2][2] = x
+                        see()
+            else:
+
+                        print("It's value is already set ")
+                        plc(x)
+        else:
+
+            print("Enter valid Index value! ")
+            plc(x)
+
+    def check(token,ctoken):
+        for I in range(3):
+            if (a[I][0] == a[I][1] == a[I][2]== token) or (a[0][I] == a[1][I] == a[2][I]== token) or (a[0][0] == a[1][1] == a[2][2]== token) or (a[0][2] == a[1][1] == a[2][0]== token) :
+                see()
+                if pro==2:
+                    print("Congrats!  You are a champ \n\tYOU WON")
+                else:
+                    print("Player one WON")
+                exit()
+            elif (a[I][0] == a[I][1] == a[I][2]== ctoken) or (a[0][I] == a[1][I] == a[2][I]== ctoken) or (a[0][0] == a[1][1] == a[2][2]== ctoken) or (a[0][2] == a[1][1] == a[2][0]== ctoken) :
+                see()
+                if pro==2:
+                    print("Sorry, you lost the Game .")
+                else:
+                    print("Player two WON")
+                exit()
+
+    def computer(token,ctoken):
+        t=0
+        for i in range(3):
+            for j in range(3):
+
+                for k in range(j + 1, 3):
+                    x = [0, 1, 2]
+                    if (a[i][j] == a[i][k] == ctoken) :
+                            x.remove(j)
+                            x.remove(k)
+                            z = random.choice(x)
+                            x = [0, 1, 2]
+                            if (a[i][z] != token) and (a[i][z] != ctoken):
+                                a[i][z]=ctoken
+                                t+=1
+                                return t
+                            else:
+                                continue
+
+                    if (a[j][i] == a[k][i] == ctoken):
+                        x.remove(j)
+                        x.remove(k)
+                        z = random.choice(x)
+                        if (a[z][i] != token) and (a[z][i] != ctoken):
+                            a[z][i]=ctoken
+                            t+=1
+                            return t
+                        else:
+                            continue
+
+                    if (a[j][j] == a[k][k] == ctoken):
+                        x.remove(j)
+                        x.remove(k)
+                        z = random.choice(x)
+                        x = [0, 1, 2]
+                        if (a[z][z] != token) and (a[z][z] != ctoken):
+                                                a[z][z] = ctoken
+
+                                                t += 1
+                                                return t
+                        else:
+                            continue
+
+                    if (a[0][2] == a[1][1] == ctoken) or (a[0][2] == a[2][0] == ctoken) or (a[2][0] == a[1][1] == ctoken):
+
+                        if a[1][1] == ' ':
+                                                a[1][1] = ctoken
+                                                t += 1
+                                                return t
+
+                        elif a[2][0] == ' ':
+                                                a[2][0] = ctoken
+
+                                                t += 1
+                                                return t
+
+                        elif a[0][2] == ' ':
+                                                a[0][2] = ctoken
+                                                t += 1
+                                                return t
+
+                        else:
+                            continue
+        if t == 0:
+            for i in range(3):
+                for j in range(3):
+
+                    for k in range(j + 1, 3):
+                        x = [0, 1, 2]
+                        if (a[i][j] == a[i][k] == token) :
+                            x.remove(j)
+                            x.remove(k)
+                            z = random.choice(x)
+                            x = [0, 1, 2]
+                            if (a[i][z] != token) and (a[i][z] != ctoken):
+                                                    a[i][z]=ctoken
+
+                                                    t+=1
+                                                    return t
+                            else:
+                                continue
+
+                        if (a[j][i] == a[k][i] == token):
+                            x.remove(j)
+                            x.remove(k)
+                            z = random.choice(x)
+                            x = [0, 1, 2]
+                            if (a[z][i] != token) and (a[z][i] != ctoken):
+                                                    a[z][i]=ctoken
+
+                                                    t+=1
+                                                    return t
+                            else:
+                                continue
+
+                        if (a[j][j] == a[k][k] == token):
+                            x.remove(j)
+                            x.remove(k)
+                            z = random.choice(x)
+                            x = [0, 1, 2]
+                            if (a[z][z] != token) and (a[z][z] != ctoken):
+                                                a[z][z] = ctoken
+
+                                                t += 1
+                                                return t
+                            else:
+                                continue
+
+                        if (a[0][2] == a[1][1] == token) or (a[0][2] == a[2][0] == token) or (a[2][0] == a[1][1] == token):
+
+                            if a[1][1] == ' ':
+                                a[1][1] = ctoken
+                                t += 1
+                                return t
+
+                            elif a[2][0] == ' ':
+                                                    a[2][0] = ctoken
+
+                                                    t += 1
+                                                    return t
+
+                            elif a[0][2] == ' ':
+                                                    a[0][2] = ctoken
+
+                                                    t += 1
+                                                    return t
+
+                            else:
+                                continue
+
+        if t==0:
+                    l = [0, 1, 2]
+                    while t == 0:
+                                m = random.choice(l)
+                                n = random.choice(l)
+                                if (a[m][n] != ctoken) and (a[m][n] != token):
+                                    a[m][n] = ctoken
+                                    t += 1
+
+    print("HELLO !!!\n\nLETS PLAY TIC - TAC\n\nNOTE:\n\tEnter Exit in token selection - TO EXIT")
+    a = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+    chance = 0
+
+    print("\nPress 1 to play with Friend")
+    print("\nPress 2 to play with Computer")
+    print("\nPress 3 to Exit")
+
+    pro = int(input("ENTER YOUR VALID CHOICE OF PLAYING : "))
+    while pro not in (1, 2,  3):
+        print("ENTER VALID CHOICE ONLY ")
+        pro = int(input("ENTER YOUR VALID CHOICE OF PLAYING : "))
+
+    if pro==1:
+        print("YOUR TOKENS LIES AMONG X AND O only ....")
+        token = input("CHOOOSE ONE AMONG X,O : ").upper()
+        if token == 'EXIT':
+            exit()
+        symb1 = 'X'
+        symb2 = 'O'
+        while token not in ('X', 'O', 'EXIT'):
+            print(" VALID TOKEN ONLY")
+            token = input("CHOOOSE ONE AMONG X,O : ")
+        if token == symb2:
+            ctoken = symb1
+        else:
+            ctoken = symb2
+        see()
+        chance = 0
+        while True:
+            print("FIRST PLAYER TURN")
+            plc(token)
+            chance += 1
+            check(token,ctoken)
+            if chance >= 9:
+                print("Its a Tie ")
+                exit()
+            print("SECOND PLAYER TURN")
+            plc(ctoken)
+            chance += 1
+
+    elif pro==2:
+        token = input("CHOOOSE ONE AMONG X,O : ").upper()
+        if token == 'EXIT':
+            exit()
+        symb1 = 'X'
+        symb2 = 'O'
+        while token not in ('X', 'O', 'EXIT'):
+            print(" VALID TOKEN ONLY")
+            token = input("CHOOOSE ONE AMONG X,O : ")
+        if token == symb2:
+            ctoken = symb1
+        else:
+            ctoken = symb2
+        while True:
+            see()
+            plc(token)
+            chance += 1
+            if chance >= 9:
+                print("Its a Tie ")
+                exit()
+            check(token,ctoken)
+            computer(token,ctoken)
+            chance += 1
+            check(token,ctoken)
+    else:
+        exit()
+
+except Exception:
+    print("SOMETHING WRONG \nPROGRAM ENDED IN MIDDLE\nTRY AGAIN")
